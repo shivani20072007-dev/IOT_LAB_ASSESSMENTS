@@ -1,0 +1,294 @@
+C51 COMPILER V9.60.7.0   PWM                                                               08/21/2026 11:00:23 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE PWM
+OBJECT MODULE PLACED IN .\Objects\pwm.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE pwm.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\pwm.l
+                    -st) TABS(2) OBJECT(.\Objects\pwm.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          sbit led = P3^1;
+   3          int count = 1;
+   4          int direction = 1;
+   5          
+   6          void controller(int a)
+   7          {
+   8   1        /*if(a>10)
+   9   1        {
+  10   1          a = 11 - (a%10);
+  11   1        }*/
+  12   1        if(a==1)
+  13   1        {
+  14   2          int rand = 0;
+  15   2          while(rand<10000)
+  16   2          {
+  17   3            while(TL0<=0xAB)
+  18   3            {
+  19   4              led = 1;
+  20   4            }
+  21   3            while(TF0==0)
+  22   3            {
+  23   4              led = 0;
+  24   4            }
+  25   3            TF0 = 0;
+  26   3            TH0 = 0xFF;
+  27   3            TL0 = 0xA3;
+  28   3            rand++;
+  29   3            TR0 = 1;
+  30   3          }
+  31   2        }
+  32   1        else if(a==2)
+  33   1        {
+  34   2          int rand = 0;
+  35   2          while(rand<10000)
+  36   2          {
+  37   3            while(TL0<=0xB5)
+  38   3            {
+  39   4              led = 1;
+  40   4            }
+  41   3            while(TF0==0)
+  42   3            {
+  43   4              led = 0;
+  44   4            }
+  45   3            TF0 = 0;
+  46   3            TH0 = 0xFF;
+  47   3            TL0 = 0xA3;
+  48   3            rand++;
+  49   3            TR0 = 1;
+  50   3          }
+  51   2        }
+  52   1        else if(a==3)
+  53   1        {
+  54   2          int rand = 0;
+C51 COMPILER V9.60.7.0   PWM                                                               08/21/2026 11:00:23 PAGE 2   
+
+  55   2          while(rand<10000)
+  56   2          {
+  57   3              while(TL0<=0xBE)
+  58   3              {
+  59   4                led = 1;
+  60   4              }
+  61   3              while(TF0==0)
+  62   3              {
+  63   4                led = 0;
+  64   4              }
+  65   3              TF0 = 0;
+  66   3              TH0 = 0xFF;
+  67   3              TL0 = 0xA3;
+  68   3              rand++;
+  69   3              TR0 = 1;
+  70   3          }
+  71   2          
+  72   2        }
+  73   1        else if(a==4)
+  74   1        {
+  75   2          int rand = 0;
+  76   2          while(rand<10000)
+  77   2          {
+  78   3            while(TL0<=0xC7)
+  79   3            {
+  80   4              led = 1;
+  81   4            }
+  82   3            while(TF0==0)
+  83   3            {
+  84   4              led = 0;
+  85   4            }
+  86   3            TF0 = 0;
+  87   3            TH0 = 0xFF;
+  88   3            TL0 = 0xA3;
+  89   3            rand++;
+  90   3            TR0 = 1;
+  91   3          }
+  92   2        }
+  93   1        
+  94   1        else if(a==5)
+  95   1        {
+  96   2          int rand = 0;
+  97   2          while(rand<10000)
+  98   2          {
+  99   3            while(TL0<=0xD0)
+ 100   3            {
+ 101   4              led = 1;
+ 102   4            }
+ 103   3            while(TF0==0)
+ 104   3            {
+ 105   4              led = 0;
+ 106   4            }
+ 107   3            TF0 = 0;
+ 108   3            TH0 = 0xFF;
+ 109   3            TL0 = 0xA3;
+ 110   3            rand++;
+ 111   3            TR0 = 1;
+ 112   3          }
+ 113   2        }
+ 114   1        
+ 115   1        else if(a==6)
+ 116   1        {
+C51 COMPILER V9.60.7.0   PWM                                                               08/21/2026 11:00:23 PAGE 3   
+
+ 117   2          int rand = 0;
+ 118   2          while(rand<10000)
+ 119   2          {
+ 120   3            while(TL0<=0xD9)
+ 121   3            {
+ 122   4              led = 1;
+ 123   4            }
+ 124   3            while(TF0==0)
+ 125   3            {
+ 126   4              led = 0;
+ 127   4            }
+ 128   3            TF0 = 0;
+ 129   3            TH0 = 0xFF;
+ 130   3            TL0 = 0xA3;
+ 131   3            rand++;
+ 132   3            TR0 = 1;
+ 133   3          }
+ 134   2        }
+ 135   1        
+ 136   1        else if(a==7)
+ 137   1        {
+ 138   2          int rand = 0;
+ 139   2          while(rand<10000)
+ 140   2          {
+ 141   3            while(TL0<=0xE2)
+ 142   3            {
+ 143   4              led = 1;
+ 144   4            }
+ 145   3            while(TF0==0)
+ 146   3            {
+ 147   4              led = 0;
+ 148   4            }
+ 149   3            TF0 = 0;
+ 150   3            TH0 = 0xFF;
+ 151   3            TL0 = 0xA3;
+ 152   3            rand++;
+ 153   3            TR0 = 1;
+ 154   3          }
+ 155   2        }
+ 156   1        
+ 157   1        else if(a==8)
+ 158   1        {
+ 159   2          int rand = 0;
+ 160   2          while(rand<10000)
+ 161   2          {
+ 162   3            while(TL0<=0xEE)
+ 163   3            {
+ 164   4              led = 1;
+ 165   4            }
+ 166   3            while(TF0==0)
+ 167   3            {
+ 168   4              led = 0;
+ 169   4            }
+ 170   3            TF0 = 0;
+ 171   3            TH0 = 0xFF;
+ 172   3            TL0 = 0xA3;
+ 173   3            rand++;
+ 174   3            TR0 = 1;
+ 175   3          }
+ 176   2        }
+ 177   1        
+ 178   1        else if(a==9)
+C51 COMPILER V9.60.7.0   PWM                                                               08/21/2026 11:00:23 PAGE 4   
+
+ 179   1        {
+ 180   2          int rand = 0;
+ 181   2          while(rand<10000)
+ 182   2          {
+ 183   3            while(TL0<=0xF5)
+ 184   3            {
+ 185   4              led = 1;
+ 186   4            }
+ 187   3            while(TF0==0)
+ 188   3            {
+ 189   4              led = 0;
+ 190   4            }
+ 191   3            TF0 = 0;
+ 192   3            TH0 = 0xFF;
+ 193   3            TL0 = 0xA3;
+ 194   3            rand++;
+ 195   3            TR0 = 1;
+ 196   3          }
+ 197   2        }
+ 198   1        
+ 199   1        else if(a==10)
+ 200   1        {
+ 201   2          int rand = 0;
+ 202   2          while(rand<10000)
+ 203   2          {
+ 204   3            while(TF0==0)
+ 205   3            {
+ 206   4              led = 1;
+ 207   4            }
+ 208   3            TF0 = 0;
+ 209   3            TH0 = 0xFF;
+ 210   3            TL0 = 0xA3;
+ 211   3            rand++;
+ 212   3            TR0 = 1;
+ 213   3          }
+ 214   2        }
+ 215   1      }
+ 216          
+ 217          void main()
+ 218          {
+ 219   1        TMOD = 0x01;
+ 220   1        TH0 = 0xFF;
+ 221   1        TL0 = 0xA3;
+ 222   1        TR0 = 1;
+ 223   1        led = 0;
+ 224   1        while(1)
+ 225   1        {
+ 226   2          /*if(count<=10)
+ 227   2          {
+ 228   2            controller(count);
+ 229   2            count++;
+ 230   2          }
+ 231   2          else
+ 232   2          {
+ 233   2            controller(count);
+ 234   2            count--;
+ 235   2          }
+ 236   2          if(count>20)
+ 237   2          {
+ 238   2            count = 1;
+ 239   2          }
+ 240   2          
+C51 COMPILER V9.60.7.0   PWM                                                               08/21/2026 11:00:23 PAGE 5   
+
+ 241   2          TH0 = 0xFF;
+ 242   2          TL0 = 0xA3;
+ 243   2          TR0 = 1;*/
+ 244   2          controller(count);
+ 245   2      
+ 246   2          if(count == 10)
+ 247   2          {
+ 248   3              direction = -1;
+ 249   3          }
+ 250   2          else if(count == 1)
+ 251   2          {
+ 252   3              direction = 1;
+ 253   3          }
+ 254   2      
+ 255   2          count = count + direction;
+ 256   2      
+ 257   2          TH0 = 0xFF;
+ 258   2          TL0 = 0xA3;
+ 259   2          TR0 = 1;
+ 260   2          
+ 261   2        }
+ 262   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    695    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,27 @@
+--cpu=Cortex-M4.fp.sp
+"lab_12final\startup_stm32f410rx.o"
+"lab_12final\bme280.o"
+"lab_12final\main.o"
+"lab_12final\stm32f4xx_it.o"
+"lab_12final\stm32f4xx_hal_msp.o"
+"lab_12final\stm32f4xx_hal_i2c.o"
+"lab_12final\stm32f4xx_hal_i2c_ex.o"
+"lab_12final\stm32f4xx_hal_rcc.o"
+"lab_12final\stm32f4xx_hal_rcc_ex.o"
+"lab_12final\stm32f4xx_hal_flash.o"
+"lab_12final\stm32f4xx_hal_flash_ex.o"
+"lab_12final\stm32f4xx_hal_flash_ramfunc.o"
+"lab_12final\stm32f4xx_hal_gpio.o"
+"lab_12final\stm32f4xx_hal_dma_ex.o"
+"lab_12final\stm32f4xx_hal_dma.o"
+"lab_12final\stm32f4xx_hal_pwr.o"
+"lab_12final\stm32f4xx_hal_pwr_ex.o"
+"lab_12final\stm32f4xx_hal_cortex.o"
+"lab_12final\stm32f4xx_hal.o"
+"lab_12final\stm32f4xx_hal_exti.o"
+"lab_12final\stm32f4xx_hal_uart.o"
+"lab_12final\system_stm32f4xx.o"
+--strict --scatter "Lab_12final\Lab_12final.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "Lab_12final.map" -o Lab_12final\Lab_12final.axf

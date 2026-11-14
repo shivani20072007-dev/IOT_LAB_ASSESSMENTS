@@ -1,0 +1,23 @@
+--cpu=Cortex-M4.fp.sp
+"lab_11\startup_stm32f401xe.o"
+"lab_11\main.o"
+"lab_11\stm32f4xx_it.o"
+"lab_11\stm32f4xx_hal_msp.o"
+"lab_11\stm32f4xx_hal_rcc.o"
+"lab_11\stm32f4xx_hal_rcc_ex.o"
+"lab_11\stm32f4xx_hal_flash.o"
+"lab_11\stm32f4xx_hal_flash_ex.o"
+"lab_11\stm32f4xx_hal_flash_ramfunc.o"
+"lab_11\stm32f4xx_hal_gpio.o"
+"lab_11\stm32f4xx_hal_dma_ex.o"
+"lab_11\stm32f4xx_hal_dma.o"
+"lab_11\stm32f4xx_hal_pwr.o"
+"lab_11\stm32f4xx_hal_pwr_ex.o"
+"lab_11\stm32f4xx_hal_cortex.o"
+"lab_11\stm32f4xx_hal.o"
+"lab_11\stm32f4xx_hal_exti.o"
+"lab_11\system_stm32f4xx.o"
+--strict --scatter "Lab_11\Lab_11.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "Lab_11.map" -o Lab_11\Lab_11.axf

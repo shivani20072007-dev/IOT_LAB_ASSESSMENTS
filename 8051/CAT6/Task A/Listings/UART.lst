@@ -1,0 +1,83 @@
+C51 COMPILER V9.60.7.0   UART                                                              08/20/2026 13:15:25 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE UART
+OBJECT MODULE PLACED IN .\Objects\UART.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE UART.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\UART
+                    -.lst) TABS(2) OBJECT(.\Objects\UART.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          int counter = 0;
+   3          char func(char s[])
+   4          {
+   5   1          if(counter >= 5)
+   6   1              counter = 0;
+   7   1          return s[counter++];
+   8   1      }
+   9          void main()
+  10          {
+  11   1          char s[] = "hello";
+  12   1          TMOD = 0x20;
+  13   1          TH1 = 0xFD;
+  14   1          TL1 = 0xFD;
+  15   1          SCON = 0x50;
+  16   1          TR1 = 1;
+  17   1                  while(1)
+  18   1          {
+  19   2              SBUF = func(s);
+  20   2              while(TI == 0);
+  21   2              TI = 0;
+  22   2          }
+  23   1      }
+  24          
+  25          /*#include<reg51.h>
+  26          
+  27          void first()
+  28          {
+  29            SCON = 0x50;
+  30            TMOD = 0x20;
+  31            TH1 = 0xFD;
+  32            TL1 = 0xFD;
+  33            TR1 = 1;
+  34          }
+  35          
+  36          void transmit(char a)
+  37          {
+  38            SBUF = a;
+  39            while(TI==0);
+  40            TI = 0;
+  41          }
+  42          
+  43          void main()
+  44          {
+  45            first();
+  46            while(1)
+  47            {
+  48              char a[] = "SDFSHFIFSKF\n";
+  49              int b = 0;
+  50              while(a[b]!='\0')
+  51              {
+  52                transmit(a[b]);
+  53                b++;
+  54              }
+C51 COMPILER V9.60.7.0   UART                                                              08/20/2026 13:15:25 PAGE 2   
+
+  55            }
+  56          }*/
+  57          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     89    ----
+   CONSTANT SIZE    =      6    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2       6
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

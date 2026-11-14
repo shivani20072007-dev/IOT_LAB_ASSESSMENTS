@@ -1,0 +1,486 @@
+C51 COMPILER V9.60.7.0   BLABLA                                                            08/07/2026 11:03:25 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE BLABLA
+OBJECT MODULE PLACED IN .\Objects\blabla.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE blabla.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\bl
+                    -abla.lst) TABS(2) OBJECT(.\Objects\blabla.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          
+   3          #define segment P0
+   4          #define sw P2
+   5          #define led P1
+   6          
+   7          sbit r1 = P2^7;
+   8          sbit r2 = P2^6;
+   9          sbit r3 = P2^5;
+  10          sbit r4 = P2^4;
+  11          
+  12          sbit c1 = P2^3;
+  13          sbit c2 = P2^2;
+  14          sbit c3 = P2^1;
+  15          sbit c4 = P2^0;
+  16          
+  17          int keypad_scan();
+  18          
+  19          void delay()
+  20          {
+  21   1          int i, j;
+  22   1          for(i = 0; i < 75; i++)
+  23   1          {
+  24   2            for(j = 0; j < 50; j++)
+  25   2            {
+  26   3            }
+  27   2          }
+  28   1      }
+  29          
+  30          int mode1_alt()
+  31          {
+  32   1        int i;
+  33   1        
+  34   1        /*while(mode==1)
+  35   1        {
+  36   1          led = 0x01;
+  37   1          delay();
+  38   1          if(switch_mode())
+  39   1          {
+  40   1            return;
+  41   1          }
+  42   1          led = 0x02;
+  43   1          delay();
+  44   1          if(switch_mode())
+  45   1          {
+  46   1            return;
+  47   1          }
+  48   1          led = 0x04;
+  49   1          delay();
+  50   1          if(switch_mode())
+  51   1          {
+  52   1            return;
+  53   1          }
+  54   1          led = 0x08;
+C51 COMPILER V9.60.7.0   BLABLA                                                            08/07/2026 11:03:25 PAGE 2   
+
+  55   1          delay();
+  56   1          if(switch_mode())
+  57   1          {
+  58   1            return;
+  59   1          }
+  60   1        }*/
+  61   1        int a;
+  62   1        while(keypad_scan() != 0);
+  63   1          while(1)
+  64   1          {
+  65   2            for(i=0;i<4;i++)
+  66   2            {
+  67   3              led = (2<<i);
+  68   3              delay();
+  69   3              a = keypad_scan();
+  70   3              if(a!=0)
+  71   3              {
+  72   4                
+  73   4                return a;
+  74   4              }
+  75   3              delay();
+  76   3              a = keypad_scan();
+  77   3              if(a!=0)
+  78   3              {
+  79   4                
+  80   4                return a;
+  81   4              }
+  82   3            }
+  83   2          }
+  84   1        
+  85   1      }
+  86          
+  87          int mode2_bincount()
+  88          {
+  89   1        int a;
+  90   1        unsigned char count = 0;
+  91   1        while(keypad_scan() != 0);
+  92   1        
+  93   1        while(1)
+  94   1        {
+  95   2          if(count>15)
+  96   2          {
+  97   3            count = 0;
+  98   3          }
+  99   2          led = (count<<1);
+ 100   2          count++;
+ 101   2          delay();
+ 102   2          a = keypad_scan();
+ 103   2          if(a!=0)
+ 104   2          {
+ 105   3            
+ 106   3                return a;
+ 107   3          }
+ 108   2          delay();
+ 109   2          a = keypad_scan();
+ 110   2          if(a!=0)
+ 111   2          {
+ 112   3            
+ 113   3            return a;
+ 114   3          }
+ 115   2          delay();
+ 116   2          a = keypad_scan();
+C51 COMPILER V9.60.7.0   BLABLA                                                            08/07/2026 11:03:25 PAGE 3   
+
+ 117   2          if(a!=0)
+ 118   2          {
+ 119   3            
+ 120   3            return a;
+ 121   3          }
+ 122   2          delay();
+ 123   2          a = keypad_scan();
+ 124   2          if(a!=0)
+ 125   2              {
+ 126   3                
+ 127   3                return a;
+ 128   3              }
+ 129   2              delay();
+ 130   2              a = keypad_scan();
+ 131   2              if(a!=0)
+ 132   2              {
+ 133   3                
+ 134   3                return a;
+ 135   3              }
+ 136   2              delay();
+ 137   2              a = keypad_scan();
+ 138   2              if(a!=0)
+ 139   2              {
+ 140   3                
+ 141   3                return a;
+ 142   3              }
+ 143   2              delay();
+ 144   2              a = keypad_scan();
+ 145   2              if(a!=0)
+ 146   2              {
+ 147   3                
+ 148   3                return a;
+ 149   3              }
+ 150   2        }
+ 151   1      }
+ 152          
+ 153          int mode3_altpattern()
+ 154          {
+ 155   1        int a;
+ 156   1        unsigned char pattern = 0x14;
+ 157   1        while(keypad_scan() != 0);
+ 158   1        /*unsigned char pattern = 0xF5;
+ 159   1        while(mode==3)
+ 160   1        {
+ 161   1          led = pattern;
+ 162   1          pattern = pattern ^ 0x0F;
+ 163   1          delay();
+ 164   1          if(switch_mode())
+ 165   1          {
+ 166   1            return;
+ 167   1          }
+ 168   1        }*/
+ 169   1        
+ 170   1        /*while(mode==3)
+ 171   1        {
+ 172   1          led = 0x0A;
+ 173   1          delay();
+ 174   1          if(switch_mode())
+ 175   1          {
+ 176   1            return;
+ 177   1          }
+ 178   1          led = 0x05;
+C51 COMPILER V9.60.7.0   BLABLA                                                            08/07/2026 11:03:25 PAGE 4   
+
+ 179   1          delay();
+ 180   1          if(switch_mode())
+ 181   1          {
+ 182   1            return;
+ 183   1          }
+ 184   1        }*/
+ 185   1        
+ 186   1        while(1)
+ 187   1        {
+ 188   2          led = pattern;
+ 189   2          pattern = pattern^(0xFF);
+ 190   2          delay();
+ 191   2          a = keypad_scan();
+ 192   2          if(a!=0)
+ 193   2              {
+ 194   3                
+ 195   3                return a;
+ 196   3              }
+ 197   2              delay();
+ 198   2              a = keypad_scan();
+ 199   2              if(a!=0)
+ 200   2              {
+ 201   3                
+ 202   3                return a;
+ 203   3              }
+ 204   2        }
+ 205   1      }
+ 206          
+ 207          int mode4_altpattern()
+ 208          {
+ 209   1        int a;
+ 210   1        unsigned char pattern = 0x1F;
+ 211   1        while(keypad_scan() != 0);
+ 212   1        /*while(mode==4)
+ 213   1        {
+ 214   1          led = 0x0F;
+ 215   1          delay();
+ 216   1          if(switch_mode())
+ 217   1          {
+ 218   1            return;
+ 219   1          }
+ 220   1          led = 0x00;
+ 221   1          delay();
+ 222   1          if(switch_mode())
+ 223   1          {
+ 224   1            return;
+ 225   1          }
+ 226   1        }*/
+ 227   1        
+ 228   1        while(1)
+ 229   1        {
+ 230   2          led = pattern;
+ 231   2          pattern = pattern^ (0xFF);
+ 232   2          delay();
+ 233   2          a = keypad_scan();
+ 234   2          if(a!=0)
+ 235   2              {
+ 236   3                
+ 237   3                return a;
+ 238   3              }
+ 239   2              delay();
+ 240   2              a = keypad_scan();
+C51 COMPILER V9.60.7.0   BLABLA                                                            08/07/2026 11:03:25 PAGE 5   
+
+ 241   2              if(a!=0)
+ 242   2              {
+ 243   3                
+ 244   3                return a;
+ 245   3              }
+ 246   2        }
+ 247   1      }
+ 248          
+ 249          void display_digit(unsigned char value)
+ 250          {
+ 251   1          if(value == '0')
+ 252   1              segment = ~(0x40);
+ 253   1          else if(value == '1')
+ 254   1              segment = ~(0x4F);
+ 255   1          else if(value == '2')
+ 256   1              segment = ~(0x24);
+ 257   1          else if(value == '3')
+ 258   1              segment = ~(0x30);
+ 259   1          else if(value == '4')
+ 260   1            segment = ~(0x19);
+ 261   1          else if(value == '5')
+ 262   1            segment = ~(0x12);
+ 263   1          else if(value == '6')
+ 264   1            segment = ~(0x02);
+ 265   1          else if(value == '7')
+ 266   1            segment = ~(0x78);
+ 267   1          else if(value == '8')
+ 268   1            segment = ~(0x00);
+ 269   1          else if(value == '9')
+ 270   1            segment = ~(0x10);
+ 271   1          else if(value == 'A')
+ 272   1            segment = ~(0x08);
+ 273   1          else if(value == 'B')
+ 274   1            segment = ~(0x03);
+ 275   1          else if(value == 'C')
+ 276   1            segment = ~(0x46);
+ 277   1          else if(value == 'D')
+ 278   1            segment = ~(0x21);
+ 279   1          else if(value == 'E')
+ 280   1            segment = ~(0x06);
+ 281   1          else if(value == 'F')
+ 282   1            segment = ~(0x0E);
+ 283   1      }
+ 284          
+ 285          void reset()
+ 286          {
+ 287   1        segment = 0x00;
+ 288   1        led = 0x00;
+ 289   1      }
+ 290          
+ 291          int keypad_scan()
+ 292          {
+ 293   1          int row = 0;
+ 294   1      
+ 295   1          sw = 0xF0;        
+ 296   1      
+ 297   1          if(r1 == 0)
+ 298   1              row = 1;
+ 299   1          else if(r2 == 0)
+ 300   1              row = 2;
+ 301   1          else if(r3 == 0)
+ 302   1              row = 3;
+C51 COMPILER V9.60.7.0   BLABLA                                                            08/07/2026 11:03:25 PAGE 6   
+
+ 303   1          else if(r4 == 0)
+ 304   1              row = 4;
+ 305   1          else
+ 306   1              return 0;
+ 307   1      
+ 308   1          delay();
+ 309   1      
+ 310   1          sw = 0x0F;          
+ 311   1        
+ 312   1          if(row == 1)
+ 313   1          {
+ 314   2              if(c1 == 0)
+ 315   2              {
+ 316   3                display_digit('0');
+ 317   3                led = 0x02;
+ 318   3                return 1;
+ 319   3                
+ 320   3              }
+ 321   2              else if(c2 == 0)
+ 322   2              {
+ 323   3                display_digit('1');
+ 324   3                led = 0x04;
+ 325   3                return 2;
+ 326   3              }
+ 327   2              else if(c3 == 0)
+ 328   2              {
+ 329   3                display_digit('2');
+ 330   3                led = 0x08;
+ 331   3                return 3;
+ 332   3              }
+ 333   2              else if(c4 == 0)
+ 334   2              {
+ 335   3                display_digit('3');
+ 336   3                led = 0x10;
+ 337   3                return 4;
+ 338   3              }
+ 339   2          }
+ 340   1        else if(row==2)
+ 341   1        {
+ 342   2          if(c1 == 0)
+ 343   2          {
+ 344   3            display_digit('4');
+ 345   3            return 5;
+ 346   3          }
+ 347   2              else if(c2 == 0)
+ 348   2              {
+ 349   3                display_digit('5');
+ 350   3                return 6;
+ 351   3              }
+ 352   2                  
+ 353   2              else if(c3 == 0)
+ 354   2              {
+ 355   3                display_digit('6');
+ 356   3                return 7;
+ 357   3              }
+ 358   2              else if(c4 == 0)
+ 359   2              {
+ 360   3                display_digit('7');
+ 361   3                return 8;
+ 362   3              }
+ 363   2                  
+ 364   2        }
+C51 COMPILER V9.60.7.0   BLABLA                                                            08/07/2026 11:03:25 PAGE 7   
+
+ 365   1        else if(row==3)
+ 366   1        {
+ 367   2              if(c1 == 0)
+ 368   2              {
+ 369   3                display_digit('8');
+ 370   3                led = 0x00;
+ 371   3                return 9;
+ 372   3              }
+ 373   2              else if(c2 == 0)
+ 374   2              {
+ 375   3                display_digit('9');
+ 376   3                return 10;
+ 377   3              }
+ 378   2              else if(c3 == 0)
+ 379   2              {
+ 380   3                led = 0x00;
+ 381   3                display_digit('A');
+ 382   3                return 11;
+ 383   3              }
+ 384   2                  
+ 385   2              else if(c4 == 0)
+ 386   2              {
+ 387   3                led = 0x00;
+ 388   3                display_digit('B');
+ 389   3                return 12;
+ 390   3              }
+ 391   2        }
+ 392   1        else if(row==4)
+ 393   1        {
+ 394   2          led = 0x00;
+ 395   2              if(c1 == 0)
+ 396   2              {
+ 397   3                display_digit('C');
+ 398   3                return 13;
+ 399   3              }
+ 400   2              else if(c2 == 0)
+ 401   2              {
+ 402   3                display_digit('D');
+ 403   3                return 14;
+ 404   3              }
+ 405   2              else if(c3 == 0)
+ 406   2              {
+ 407   3                display_digit('E');
+ 408   3                return 15;
+ 409   3              }
+ 410   2              else if(c4 == 0)
+ 411   2              {
+ 412   3                display_digit('F');
+ 413   3                return 16;
+ 414   3              }
+ 415   2        }
+ 416   1      return 0;
+ 417   1      }
+ 418          
+ 419          void main()
+ 420          {
+ 421   1        int b;
+ 422   1          reset();
+ 423   1        b = 0;
+ 424   1      
+ 425   1          while(1)
+ 426   1          {
+C51 COMPILER V9.60.7.0   BLABLA                                                            08/07/2026 11:03:25 PAGE 8   
+
+ 427   2              if(b==0)
+ 428   2              {
+ 429   3                b = keypad_scan();
+ 430   3              }
+ 431   2            switch(b)
+ 432   2            {
+ 433   3              case 5: b = mode1_alt();
+ 434   3              break;
+ 435   3              
+ 436   3              case 6: b = mode2_bincount();
+ 437   3              break;
+ 438   3              
+ 439   3              case 7: b = mode3_altpattern();
+ 440   3              break;
+ 441   3              
+ 442   3              case 8: b = mode4_altpattern();
+ 443   3              break;
+ 444   3              
+ 445   3              default: b = 0;
+ 446   3            }
+ 447   2          }
+ 448   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    802    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       7
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
